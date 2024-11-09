@@ -1,0 +1,26 @@
+services:
+  db:
+    build:
+      context: .docker/db
+    environment:
+      POSTGRES_DB: sf6
+      POSTGRES_PASSWORD: sf6
+      POSTGRES_USER: sf6
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    restart: 'no'
+  php:
+    build:
+      context: .docker/php
+    volumes:
+      - .:/var/www/sf6
+    depends_on:
+      - db
+    restart: 'no'
+    user: '1000:1000'
+    environment:
+      APP_ENV: dev
+    ports:
+      - '8000:8000'
+volumes:
+  db-data:
