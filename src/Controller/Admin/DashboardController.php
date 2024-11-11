@@ -24,7 +24,7 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('SF6 Fasttrack');
+            ->setTitle('Guestbook');
     }
 
     public function configureMenuItems(): iterable
